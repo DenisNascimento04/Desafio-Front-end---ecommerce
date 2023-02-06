@@ -1,20 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
+import { useFonts } from 'expo-font';
+import { KumbhSans_400Regular, KumbhSans_700Bold } from '@expo-google-fonts/kumbh-sans';
+import { Larning } from './src/Larning';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  let [fontsLoaded] = useFonts({
+    KumbhSans_400Regular,
+    KumbhSans_700Bold
+  });
+
+  if (!fontsLoaded) {
+    return <View />
+  }else{
+    return (
+      <Larning />
+    );
+  }
+
+}
